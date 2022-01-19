@@ -1,56 +1,47 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useMutation } from "react-query";
 // import { nanoid } from "nanoid";
 
-const NewBirth = ({ people, setPeople, refetchFlag, setRefetchFlag}) => {
+const NewBirth = ({ refetchBirthdays }) => {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState("");
   const [newUrl, setNewUrl] = useState("");
   const [newReminder, setReminder] = useState(false);
 
 
-  const newAnniversary = (e) => {
+  //
+  //Implemented useMutation and Axios to make a get request to the Rest API
+
+  const client = axios.create({
+    baseURL: "http://localhost:8000/api/birthday"
+  });
+
+  const createNewBirthMutation = useMutation(async () => await client.post("/", {
+    name: newName,
+    age: newAge,
+    url: newUrl,
+    reminder: newReminder ? 1 : 0
+  }))
+
+  const newAnniversaryHandler = async (e) => {
     e.preventDefault();
-
-    // if (!newName || !newAge || !newUrl) {
-    //   alert("Please fill in all the boxes");
-    //   return;
-    // }
-
-    setPeople([
-      ...people,
-      { name: newName, age: newAge, url: newUrl, reminder: newReminder },
-    ]);
-
-    axios
-      .post("http://localhost:8000/birthday", {
-        name: newName,
-        age: newAge,
-        url: newUrl,
-        reminder: newReminder
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .then(function () {
-        setRefetchFlag(!refetchFlag);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+    await createNewBirthMutation.mutateAsync();
     setNewName("");
     setNewAge("");
     setNewUrl("");
     setReminder("")
-  };
+    await refetchBirthdays();
+  }
+
 
   return (
-    <form className="add-form" onSubmit={(event) => newAnniversary(event)}>
+    <form className="add-form" onSubmit={(event) => newAnniversaryHandler(event)}>
       <div className="form-control">
-        <label>Add a name</label>
+        <label htmlFor="name">Add a name</label>
         <input
+          id="name"
           type="text"
           placeholder="e.g. Elodie"
           value={newName}
@@ -85,13 +76,13 @@ const NewBirth = ({ people, setPeople, refetchFlag, setRefetchFlag}) => {
           className="reminder"
           type="checkbox"
           checked={newReminder}
-           value={newReminder}
+          value={newReminder}
           onChange={(e) => setReminder(e.currentTarget.checked)}
 
         />
       </div>
 
-      <input type="submit" value="Save Birthday" className="btn btn-block"/>
+      <input type="submit" value="Save Birthday" className="btn btn-block" />
     </form>
   );
 };
