@@ -1,32 +1,23 @@
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
+import { useMutation } from 'react-query'
 
-const List = ({ people, onToggle, refetchBirthdays }) => {
+const List = ({ people, toggleReminderHandler, refetchBirthdays }) => {
+
+
   
+  //Implemented useMutation and Axios to make a delete request to the Rest API
 
   const client = axios.create({
-    baseURL: "http://localhost:8000/birthday"
+    baseURL: "http://localhost:8000/api/birthday"
   });
-  async function deleteBirthday(id) {
-    try { 
-      await client.delete(`http://localhost:8000/birthday/${id}`);
-      // alert("Birthday deleted!");
-      await refetchBirthdays();   
-    } catch (error) {
-    console.error(error);
+
+  const removeItemMutation = useMutation(async (id) => await client.delete(`/${id}`))
+
+  async function deleteBirthdayHandler(id) {
+    await removeItemMutation.mutateAsync(id);
+    await refetchBirthdays();
   }
-}
-
-   // ***
-    
-
-
-  //  function deleteBirthday(id) {
-  //    axios.delete(`http://localhost:8000/birthday/${id}`)
-  //      .then(() => refetchBirthdays({ status: 'Delete successful' }));
-  // }
-
- 
 
   return (
     <>
@@ -34,10 +25,8 @@ const List = ({ people, onToggle, refetchBirthdays }) => {
         <article
           key={id}
           className={`person ${person.reminder ? "reminder" : ""}`}
-          onDoubleClick={() => onToggle(person.id) }
+          onDoubleClick={() => toggleReminderHandler(person.id, person.reminder)}
         >
-      
-          {/* but default class person but if the person.reminder is true then we gonna have the class of reminder, else nothing. */}
           <img src={person.url} alt={person.name} />
           <div>
             <h4>
@@ -48,7 +37,8 @@ const List = ({ people, onToggle, refetchBirthdays }) => {
                   cursor: "pointer",
                   fontSize: "18px",
                 }}
-                onClick={() => deleteBirthday(person.id)}
+
+                onClick={() => deleteBirthdayHandler(person.id)}
               />
             </h4>
             <p>{person.age} years</p>
@@ -58,23 +48,5 @@ const List = ({ people, onToggle, refetchBirthdays }) => {
     </>
   );
 };
-
-// const List = ({people, onToggle}) => {
-//     return (
-//        <>
-
-//       {people.map((person, id) =>  <article key={id} className="person">
-//         <img src={person.image} alt={person.name}/><div>
-//           <h4>{person.name}</h4>
-//           <p>{person.age} years</p>
-//         </div>
-//       </article>
-//      )
-//       }
-//     </>
-//     )
-// }
-
-//
 
 export default List;
