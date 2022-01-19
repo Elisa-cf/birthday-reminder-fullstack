@@ -15,7 +15,7 @@ connection.connect((err) => {
 app.use(express.json());
 app.use(cors());
 
-app.get("/birthday", (req, res) => {
+app.get("/api/birthday", (req, res) => {
   connection
     .promise()
     .query("SELECT * FROM birthday")
@@ -28,7 +28,7 @@ app.get("/birthday", (req, res) => {
     });
 });
 
-app.get("/birthday/:id", (req, res) => {
+app.get("/api/birthday/:id", (req, res) => {
   const { id } = req.params;
   connection
     .promise()
@@ -44,7 +44,7 @@ app.get("/birthday/:id", (req, res) => {
 
 const Joi = require("joi");
 
-app.post("/birthday", (req, res) => {
+app.post("/api/birthday", (req, res) => {
   const { name, age, url, reminder } = req.body;
 
   const { error: validationErrors } = Joi.object({
@@ -74,7 +74,7 @@ app.post("/birthday", (req, res) => {
   }
 });
 
-app.patch("/birthday/:id", (req, res) => {
+app.patch("/api/birthday/:id", (req, res) => {
   const { error: validationErrors } = Joi.object({
     name: Joi.string().max(255),
     age: Joi.number().min(0),
@@ -104,7 +104,7 @@ app.patch("/birthday/:id", (req, res) => {
     });
 });
 
-app.delete("/birthday/:id", (req, res) => {
+app.delete("/api/birthday/:id", (req, res) => {
   connection
     .promise()
     .query("DELETE FROM birthday WHERE id = ?", [req.params.id])
