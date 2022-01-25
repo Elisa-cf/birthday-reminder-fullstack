@@ -17,7 +17,7 @@ function App() {
   //Implemented React Query and Axios to make a get request to the Rest API
 
   const client = axios.create({
-    baseURL: "http://localhost:8000/api/birthday"
+    baseURL: "/api/birthday"
   });
 
   const { isSuccess, data: axiosRes, refetch } = useQuery(

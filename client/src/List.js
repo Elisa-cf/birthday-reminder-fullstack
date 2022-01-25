@@ -9,7 +9,7 @@ const List = ({ people, toggleReminderHandler, refetchBirthdays }) => {
   //Implemented useMutation and Axios to make a delete request to the Rest API
 
   const client = axios.create({
-    baseURL: "http://localhost:8000/api/birthday"
+    baseURL: "/api/birthday"
   });
 
   const removeItemMutation = useMutation(async (id) => await client.delete(`/${id}`))

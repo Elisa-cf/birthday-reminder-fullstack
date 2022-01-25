@@ -15,7 +15,7 @@ const NewBirth = ({ refetchBirthdays }) => {
   //Implemented useMutation and Axios to make a get request to the Rest API
 
   const client = axios.create({
-    baseURL: "http://localhost:8000/api/birthday"
+    baseURL: "/api/birthday"
   });
 
   const createNewBirthMutation = useMutation(async () => await client.post("/", {
