@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"nodemon src/index.js\" \"npm start --prefix client\"",
+    "dev-api": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=FALSE npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
@@ -16,6 +18,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elisa-cf/birthday-reminder-heroku/issues"
+  },
+  "homepage": "https://github.com/Elisa-cf/birthday-reminder-heroku#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
