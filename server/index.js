@@ -118,4 +118,13 @@ app.delete("/api/birthday/:id", (req, res) => {
     });
 });
 
+
+// Serve static assets if in production. // we are deploying an app that contains the express server/ in other words the api and the react app from the single server. This code says to the server if he needs to send you something from the react app or something that belongs the back end
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => { // if you are heading an endpoint that is not included in any endpoints with /api/... then this block of code will send you index.html that is inside the build/client directory. In other words is saying to nodem listen if someone is trying to send a get request to whatever route that is not any of the /api/... , send the react application.
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  });
+}
+
 app.listen(serverPort);
