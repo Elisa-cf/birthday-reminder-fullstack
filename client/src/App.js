@@ -43,9 +43,9 @@ function App() {
 
  //REFETCH FUNCTION
 
-  const refetchBirthdays = () => {
-    setRefetchFlag(!refetchFlag);
-  };
+  // const refetchBirthdays = () => {
+  //   setRefetchFlag(!refetchFlag);
+  // };
 
   return (
     <main>
