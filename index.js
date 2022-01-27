@@ -3,7 +3,7 @@ const connection = require("./db");
 const serverPort = process.env.PORT || 5000;
 const app = express();
 const cors = require("cors");
-
+/*
 connection.connect((err) => {
   if (err) {
     console.error("error connecting to db", err);
@@ -11,7 +11,7 @@ connection.connect((err) => {
     console.log("connected to db");
   }
 });
-
+*/
 app.use(express.json());
 app.use(cors());
 
