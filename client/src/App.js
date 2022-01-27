@@ -10,9 +10,6 @@ import List from "./List";
 import NewBirth from "./NewBirth";
 
 function App() {
-  const [people, setPeople] = useState([]);
-  const [refetchFlag, setRefetchFlag] = useState(false);
-  
 
   //Implemented React Query and Axios to make a get request to the Rest API
 
@@ -41,11 +38,6 @@ function App() {
     await refetch()
   }
 
- //REFETCH FUNCTION
-
-  // const refetchBirthdays = () => {
-  //   setRefetchFlag(!refetchFlag);
-  // };
 
   return (
     <main>
@@ -65,7 +57,6 @@ function App() {
             toggleReminderHandler={toggleReminderHandler}
           />
         }
-        <button onClick={() => setPeople([])}>Clear all</button>
       </section>
     </main>
   );
