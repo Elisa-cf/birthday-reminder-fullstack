@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useMutation } from "react-query";
-// import { nanoid } from "nanoid";
 
 const NewBirth = ({ refetchBirthdays }) => {
   const [newName, setNewName] = useState("");
