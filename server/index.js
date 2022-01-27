@@ -3,15 +3,7 @@ const connection = require("./db");
 const serverPort = process.env.PORT || 5000;
 const app = express();
 const cors = require("cors");
-/*
-connection.connect((err) => {
-  if (err) {
-    console.error("error connecting to db", err);
-  } else {
-    console.log("connected to db");
-  }
-});
-*/
+
 app.use(express.json());
 app.use(cors());
 
@@ -84,10 +76,7 @@ app.patch("/api/birthday/:id", (req, res) => {
   if (validationErrors)
     return res.status(422).json({ errors: validationErrors.details });
 
-  // if I receive req.body.age I add "age = ?" to the query and I push req.body.age to the array
-  // if I receive req.body.name I add "name = ?" to the query and I push req.body.name to the array
-  // etc.
-  //https://github.com/WildCodeSchool/2021-09-Remote-EN-REST-like-API/blob/main/index.js
+
   console.log(req.body.reminder);
   connection
     .promise()
