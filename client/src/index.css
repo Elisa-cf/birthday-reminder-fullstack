@@ -83,7 +83,9 @@ h1 {
   font-size: 3rem;
 }
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color:#13795B;
 }
 h3 {
   font-size: 1.25rem;
@@ -100,10 +102,10 @@ p {
     font-size: 4rem;
   }
   h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   h3 {
-    font-size: 1.75rem;
+    font-size: 1.60rem;
   }
   h4 {
     font-size: 1rem;
@@ -230,7 +232,7 @@ main {
 
 .btn {
   display: inline-block;
-  background: var(--clr-primary-6);
+  background: var(--clr-primary-7);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -318,3 +320,13 @@ main {
     transform: translate(24px, 0);
   }
 }
+
+/* header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
