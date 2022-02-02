@@ -3,10 +3,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useMutation } from 'react-query'
 import Spinner from "./Spinner";
-
-
-import List from "./List";
-import NewBirth from "./NewBirth";
+import List from "./components/List";
+import NewBirth from "./components/NewBirth";
 
 function App() {
 
