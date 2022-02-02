@@ -16,6 +16,7 @@ Live site: https://calm-falls-35922.herokuapp.com/
 - React Query
 - Axios
 - React Hooks
+- Cloudinary
 
 ### Backend of this application:
 
