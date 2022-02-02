@@ -7,6 +7,8 @@ import Spinner from "./Spinner";
 import List from "./components/List";
 import NewBirth from "./components/NewBirth";
 import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [showBirthdayForm, setShowBirthdayForm] = useState(false);
@@ -40,9 +42,11 @@ function App() {
 
 
   return (
+    <>
+    <Navbar/>
     <main>
       {isSuccess ? 
-      <section className="container">
+          <section className="container" >
         <Header onAdd={() => setShowBirthdayForm(!showBirthdayForm)} showAdd={showBirthdayForm}/>
         {showBirthdayForm &&
         isSuccess  && <NewBirth
@@ -60,33 +64,11 @@ function App() {
       </section>
       : <Spinner/>}
     </main>
-    
+      <Footer />
+    </>
+   
   )
 }
-
-
-//   return ( 
-//     <main>
-//       <section className="container">
-//         {isSuccess
-//           ? <NewBirth
-//             people={axiosRes.data}
-//             refetchBirthdays={refetch}
-//           />
-//           : <Spinner />
-//         }
-//         <h3>{isSuccess ? `${axiosRes.data.length} birthdays today` : "loading..."}</h3>
-//         {isSuccess &&
-//           <List
-//             refetchBirthdays={refetch}
-//             people={axiosRes.data}
-//             toggleReminderHandler={toggleReminderHandler}
-//           />
-//         }
-//       </section>
-//     </main>
-//   );
-// }
 
 
 export default App;
