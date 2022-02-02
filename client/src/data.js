@@ -1,11 +1,22 @@
 import React from 'react';
-import { FaLinkedin, AiFillGithub } from react-icons/fa;
+import { FaLinkedin } from "react-icons/fa";
+import { AiOutlineGithub } from "react-icons/ai"
 
 export const links = [
   {
     id: 1,
     url: "/",
     text: "home",
+  },
+  {
+    id: 2,
+    url: "/projects",
+    text: "other projects",
+  },
+  {
+    id: 3,
+    url: "/projects",
+    text: "about me",
   },
  
 ]
@@ -20,12 +31,11 @@ export const social =  [
   }, 
 
   {
-    id: 1,
+    id: 2,
     url: "https://github.com/Elisa-cf",
-    icon: <AiFillGithub />,
+    icon: <AiOutlineGithub />,
 
   }, 
 
 ]
 
-export default data
