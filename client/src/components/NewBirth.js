@@ -94,7 +94,7 @@ const NewBirth = ({ refetchBirthdays }) => {
           onChange={(e) => setNewUrl(e.target.value)}
           required
         />*/}
-        <button onClick={handleUpload}>Upload an image</button>
+        <button style={{ backgroundColor: "#4ED4AC", padding: "10px 20px", fontsize: "1.2rem" }} onClick={handleUpload}>Upload an image</button>
       </div>
       {/* <div className="form-control">
         <label for="img">Paste your avatar in url format:</label>

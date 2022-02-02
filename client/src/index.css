@@ -232,7 +232,7 @@ main {
 
 .btn {
   display: inline-block;
-  background: var(--clr-primary-7);
+  background: #4ED4AC;
   color: #fff;
   border: none;
   padding: 10px 20px;
