@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useMutation } from "react-query";
+import styled from 'styled-components'
 
 const NewBirth = ({ refetchBirthdays }) => {
   const [newName, setNewName] = useState("");
@@ -63,7 +64,7 @@ const NewBirth = ({ refetchBirthdays }) => {
   return (
     <form className="add-form" onSubmit={(event) => newAnniversaryHandler(event)}>
       <div className="form-control">
-        <label htmlFor="name">Add a name</label>
+        <LabelInputs htmlFor="name">Add a name</LabelInputs>
         <input
           id="name"
           type="text"
@@ -74,7 +75,7 @@ const NewBirth = ({ refetchBirthdays }) => {
         />
       </div>
       <div className="form-control">
-        <label>Add the age</label>
+        <LabelInputs>Add the age</LabelInputs>
         <input
           type="text"
           placeholder="e.g. 33"
@@ -94,7 +95,7 @@ const NewBirth = ({ refetchBirthdays }) => {
           onChange={(e) => setNewUrl(e.target.value)}
           required
         />*/}
-        <button style={{ backgroundColor: "#4ED4AC", padding: "10px 20px", fontsize: "1.2rem" }} onClick={handleUpload}>Upload an image</button>
+        <button style={{ backgroundColor: "#4ED4AC", padding: "8px 20px", fontsize: "1.2rem" }} onClick={handleUpload}>Upload an image</button>
       </div>
       {/* <div className="form-control">
         <label for="img">Paste your avatar in url format:</label>
@@ -108,14 +109,13 @@ const NewBirth = ({ refetchBirthdays }) => {
         />
       </div> */}
       <div className="form-control form-control-check">
-        <label>Important</label>
+        <LabelCheckBox>Important</LabelCheckBox>
         <input
           className="reminder"
           type="checkbox"
           checked={newReminder}
           value={newReminder}
           onChange={(e) => setReminder(e.currentTarget.checked)}
-
         />
       </div>
 
@@ -123,5 +123,15 @@ const NewBirth = ({ refetchBirthdays }) => {
     </form>
   );
 };
+
+const LabelCheckBox = styled.label`
+font-size: 1.1rem;
+text-align: end;
+`
+
+const LabelInputs = styled.label`
+font-size: 1.1rem;
+
+`
 
 export default NewBirth;
