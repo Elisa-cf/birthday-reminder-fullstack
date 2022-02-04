@@ -5,25 +5,31 @@ Live site: https://calm-falls-35922.herokuapp.com/
 ## About of this application
 
 - Full-stack app deployed in Heroku.
-- In this application you can add the birthday of your friends. Add their names, years and an avatar or a picture.
+- In this application you can add the birthday of your friends. Add their names, years and upload a picture from your device.
 - Do you have a special friend? Add his or her birthday as a important by clicking on the checkbox.
 - You can also double click on one of the birthdays that you have already added on the list and highlight it as important.
 - Do you need to delete one of the birthdays from the list? Click on cross to remove one by one the birthdays that you want. 
 
 ### Frontend of this application:
 
+The frontend app has been built with React.js. I used React Query and installed the npm package Axios library to make CRUD HTTP requests to Rest API. To fetch JSON data from the API I used the useQuery hook, and in order to create and delete data I used the useMutation hook.
+
 - React.js
+- React Hooks
 - React Query
 - Axios
-- React Hooks
+- Styled Components
 - Cloudinary
 
 ### Backend of this application:
+
+The backend has been built following the MVC architecture pattern consisting of 3 parts: models, routes and controllers.
 
 - Node.js
 - Express.js
 - mySQL
 - Joi for data validation
+- MVC architecture
 
 ### Deployment method:
 
