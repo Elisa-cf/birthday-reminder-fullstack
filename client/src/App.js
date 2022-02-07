@@ -43,34 +43,36 @@ function App() {
 
   return (
     <>
-    <Navbar/>
-    <main>
-      {isSuccess ? 
-          <section className="container" >
-        <Header onAdd={() => setShowBirthdayForm(!showBirthdayForm)} showAdd={showBirthdayForm}/>
-        {showBirthdayForm &&
-        isSuccess  && <NewBirth
-            people={axiosRes.data}
-            refetchBirthdays={refetch}
-          />  }
-          <h3>{isSuccess ? `${axiosRes.data.length} birthdays today` : ""}</h3>
-          {isSuccess &&
-          <List
-            refetchBirthdays={refetch}
-            people={axiosRes.data}
-            toggleReminderHandler={toggleReminderHandler}
-          />
-         }
-      </section>
+      <Navbar/>
+      <main>
+        {isSuccess
+          ? <section className="container" >
+              <Header onAdd={() => setShowBirthdayForm(prevValue => !prevValue)} showAdd={showBirthdayForm}/>
+              {showBirthdayForm && isSuccess  &&
+                <NewBirth
+                  people={axiosRes.data}
+                  refetchBirthdays={refetch}
+                />
+              }
+                <h3>
+                  {isSuccess && `${axiosRes.data.length} birthdays today`}
+                </h3>
+                {isSuccess &&
+                  <List
+                    refetchBirthdays={refetch}
+                    people={axiosRes.data}
+                    toggleReminderHandler={toggleReminderHandler}
+                  />
+                }
+            </section>
           : <section className="container" >
-            <Header onAdd={() => setShowBirthdayForm(!showBirthdayForm)} showAdd={showBirthdayForm} />
-            {showBirthdayForm && <NewBirth />}
-          </section>
-          }
-    </main>
+              <Header onAdd={() => setShowBirthdayForm(prevValue => !prevValue)} showAdd={showBirthdayForm} />
+              {showBirthdayForm && <NewBirth />}
+            </section>
+        }
+      </main>
       <Footer />
     </>
-   
   )
 }
 

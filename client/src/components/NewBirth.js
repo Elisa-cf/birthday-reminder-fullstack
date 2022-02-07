@@ -17,12 +17,7 @@ const NewBirth = ({ refetchBirthdays }) => {
     baseURL: "/api/birthday"
   });
 
-  const createNewBirthMutation = useMutation(async () => await client.post("/", {
-    name: newName,
-    age: newAge,
-    url: newUrl,
-    reminder: newReminder ? 1 : 0
-  }))
+  const createNewBirthMutation = useMutation(async (NewBirthObj) => await client.post("/", NewBirthObj))
 
   const newAnniversaryHandler = async (e) => {
     e.preventDefault();
@@ -32,7 +27,15 @@ const NewBirth = ({ refetchBirthdays }) => {
       return
     }
 
-    await createNewBirthMutation.mutateAsync();
+    const result = await createNewBirthMutation.mutateAsync({
+      name: newName,
+      age: newAge,
+      url: newUrl,
+      reminder: newReminder ? 1 : 0
+    });
+
+    console.log("createNewBirthMutation",result)
+
     setNewName("");
     setNewAge("");
     setNewUrl("");
@@ -62,7 +65,7 @@ const NewBirth = ({ refetchBirthdays }) => {
 
 
   return (
-    <form className="add-form" onSubmit={(event) => newAnniversaryHandler(event)}>
+    <form className="add-form" onSubmit={((event) => newAnniversaryHandler(event))}>
       <div className="form-control">
         <LabelInputs htmlFor="name">Add a name</LabelInputs>
         <input
