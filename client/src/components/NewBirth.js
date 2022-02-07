@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useMutation } from "react-query";
 import styled from 'styled-components'
@@ -7,8 +6,9 @@ import styled from 'styled-components'
 const NewBirth = ({ refetchBirthdays }) => {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState("");
-  const [newUrl, setNewUrl] = useState("https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_large.png?v=1571606090");
+  const [newUrl, setNewUrl] = useState("");
   const [newReminder, setReminder] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
 
   //Implemented useMutation and Axios to make a get request to the Rest API
@@ -27,19 +27,18 @@ const NewBirth = ({ refetchBirthdays }) => {
       return
     }
 
-    const result = await createNewBirthMutation.mutateAsync({
+    await createNewBirthMutation.mutateAsync({
       name: newName,
       age: newAge,
       url: newUrl,
       reminder: newReminder ? 1 : 0
     });
 
-    console.log("createNewBirthMutation",result)
-
     setNewName("");
     setNewAge("");
     setNewUrl("");
     setReminder("")
+
     await refetchBirthdays();
   }
 
@@ -48,6 +47,7 @@ const NewBirth = ({ refetchBirthdays }) => {
 
   const handleUpload = () => {
     // create the widget
+    setIsDisabled(true);
     const widget = window.cloudinary.createUploadWidget(
       {
         cloudName: 'dcpeaminc', 
@@ -55,7 +55,6 @@ const NewBirth = ({ refetchBirthdays }) => {
       },
       (error, result) => {
         if (result.event === 'success') {
-          console.log(result);
           setNewUrl(result.info.secure_url);
         }
       },
@@ -63,6 +62,9 @@ const NewBirth = ({ refetchBirthdays }) => {
     widget.open(); // open up the widget after creation
   }
 
+  useEffect(() => {
+    setIsDisabled(false);
+  }, [newUrl])
 
   return (
     <form className="add-form" onSubmit={((event) => newAnniversaryHandler(event))}>
@@ -98,7 +100,15 @@ const NewBirth = ({ refetchBirthdays }) => {
           onChange={(e) => setNewUrl(e.target.value)}
           required
         />*/}
-        <button style={{ backgroundColor: "#4ED4AC", padding: "8px 20px", fontsize: "1.2rem" }} onClick={handleUpload}>Upload an image</button>
+        <button
+          style={{ backgroundColor: "#4ED4AC", padding: "8px 20px", fontsize: "1.2rem" }}
+          onClick={handleUpload}
+          type="button"
+        >
+          Upload an image
+        </button>
+        {!newUrl ? <img src="https://cdn1.iconfinder.com/data/icons/unigrid-flat-multimedia-vol-1/90/020_059_upload_image_painting_photo_picture_gallery_album-512.png" style={{ display: "block", marginLeft: "auto", marginRight: "auto", width: "23%", height: "23%", marginTop: "20px" }} /> : < img src={newUrl} style={{ display: "block", marginLeft: "auto", marginRight: "auto", width: "23%", height: "23%", marginTop: "20px", borderRadius: "50%" }} /> } 
+        
       </div>
       {/* <div className="form-control">
         <label for="img">Paste your avatar in url format:</label>
@@ -122,7 +132,12 @@ const NewBirth = ({ refetchBirthdays }) => {
         />
       </div>
 
-      <input type="submit" value="Save Birthday" className="btn btn-block" />
+      <input
+        type="submit"
+        value={isDisabled ? "wait..." : "Save birthday"}
+        className="btn btn-block"
+        disabled={isDisabled}
+      />
     </form>
   );
 };

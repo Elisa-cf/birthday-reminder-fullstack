@@ -4,9 +4,11 @@ const Joi = require("joi");
 const getAllBirthdays = async (req, res) => {
   // Query DB
  const data = await Birthdays.getAllBirthdays();
+ console.log("getAllBirthdays", data);
  // Check if there was data
- if (data.length) res.status(200).json(data);
- else res.status(404).send('No birthdays found');
+ //if (data.length) res.status(200).json(data);
+ //else res.status(404).send('No birthdays found');
+ res.status(200).json(data);
 }
 
 const getBirthdayById = async (req, res) => {
