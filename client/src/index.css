@@ -256,6 +256,11 @@ main {
   transform: scale(0.98);
 }
 
+.btn:disabled {
+  background-color: grey;
+  color: white;
+}
+
 .reminder {
   background-color: var(--clr-primary-2);
   /* border-left: 5px solid var(--clr-primary-6); */
