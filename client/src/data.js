@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaLinkedin } from "react-icons/fa";
 import { AiOutlineGithub } from "react-icons/ai"
 
