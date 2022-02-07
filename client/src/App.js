@@ -62,7 +62,11 @@ function App() {
           />
          }
       </section>
-      : <Spinner/>}
+          : <section className="container" >
+            <Header onAdd={() => setShowBirthdayForm(!showBirthdayForm)} showAdd={showBirthdayForm} />
+            {showBirthdayForm && <NewBirth />}
+          </section>
+          }
     </main>
       <Footer />
     </>
