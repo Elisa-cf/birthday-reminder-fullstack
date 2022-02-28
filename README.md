@@ -35,7 +35,7 @@ The backend has been built following the MVC architecture pattern consisting of 
 
 - Heroku
 
-### Installation 💻 :
+## Installation 💻 :
 
 To install the project locally:
 
@@ -43,7 +43,7 @@ To install the project locally:
 - Install the dependencies for server => npm install 
 - Install the dependencies for client => npm run client-install
 
-### Quick Start 🏃:
+## Quick Start 🏃:
 
 - Run the client & server with concurrently => npm run dev
 - Run the Express server only => npm run server 
