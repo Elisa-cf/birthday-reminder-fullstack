@@ -9,6 +9,7 @@ import NewBirth from "./components/NewBirth";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Navbar2 from "./components/Navbar2";
 
 function App() {
   const [showBirthdayForm, setShowBirthdayForm] = useState(false);
@@ -43,7 +44,8 @@ function App() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar/> 
+      <Navbar2/>
       <main>
         {isSuccess
           ? <section className="container" >
