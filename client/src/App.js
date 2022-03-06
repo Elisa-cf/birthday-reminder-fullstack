@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <Navbar/> 
-      <Navbar2/>
+      {/* <Navbar2/> */}
       <main>
         {isSuccess
           ? <section className="container" >
