@@ -2,11 +2,11 @@ import { FaLinkedin } from "react-icons/fa";
 import { AiOutlineGithub } from "react-icons/ai"
 
 export const links = [
-  {
-    id: 1,
-    url: "/",
-    text: "home",
-  },
+  // {
+  //   id: 1,
+  //   url: "/",
+  //   text: "home",
+  // },
   { 
   id: 2,
   url: "https://elisa-canyelles-portfolio.netlify.app/",
