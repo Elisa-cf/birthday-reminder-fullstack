@@ -34,13 +34,13 @@ const Navbar = () => {
        const { id, url, text } = link;
        return (
         <li key={id}>
-         <a href={url}>{text}</a>
+         <a href={url} target="_blank">{text}</a>
         </li>
        );
       })}
-     </ul>
-    </div>
-    <ul className='social-icons'>
+     </ul>  
+    </div>  
+  <ul className='social-icons'>
      {social.map((socialIcon) => {
       const { id, url, icon } = socialIcon;
       return (
@@ -50,7 +50,7 @@ const Navbar = () => {
       );
      })}
     </ul>
-   </div>
+   </div>  
   </nav>
  );
 };
