@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useMutation } from "react-query";
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const NewBirth = ({ refetchBirthdays }) => {
+const NewBirth = ({ refetchBirthdays}) => {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState("");
   const [newUrl, setNewUrl] = useState("");
@@ -65,6 +65,7 @@ const NewBirth = ({ refetchBirthdays }) => {
   useEffect(() => {
     setIsDisabled(false);
   }, [newUrl])
+
 
   return (
     <form className="add-form" onSubmit={((event) => newAnniversaryHandler(event))}>
