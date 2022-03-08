@@ -9,10 +9,10 @@ import NewBirth from "./components/NewBirth";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Navbar2 from "./components/Navbar2";
 
 function App() {
   const [showBirthdayForm, setShowBirthdayForm] = useState(false);
+
 
   //Implemented React Query and Axios to make a get request to the Rest API
 
@@ -40,22 +40,20 @@ function App() {
     await modifyBirthdayMutation.mutateAsync({ id, currentReminderValue });
     await refetch()
   }
-
-
+ 
   return (
     <>
-      <Navbar/> 
-      {/* <Navbar2/> */}
+      <Navbar /> 
       <main>
         {isSuccess
           ? <section className="container" >
               <Header onAdd={() => setShowBirthdayForm(prevValue => !prevValue)} showAdd={showBirthdayForm}/>
-              {showBirthdayForm && isSuccess  &&
+              {showBirthdayForm && isSuccess &&
                 <NewBirth
                   people={axiosRes.data}
                   refetchBirthdays={refetch}
-                />
-              }
+               />
+            }
                 <h3>
                   {isSuccess && `${axiosRes.data.length} birthdays today`}
                 </h3>
@@ -64,19 +62,18 @@ function App() {
                     refetchBirthdays={refetch}
                     people={axiosRes.data}
                     toggleReminderHandler={toggleReminderHandler}
-                  />
-                }
+              />  
+            } 
             </section>
-          : <section className="container" >
-              <Header onAdd={() => setShowBirthdayForm(prevValue => !prevValue)} showAdd={showBirthdayForm} />
-              {showBirthdayForm && <NewBirth />}
-            </section>
-        }
+            : <Spinner/>
+        } 
       </main>
       <Footer />
     </>
   )
-}
+  }
+
+
 
 
 export default App;
