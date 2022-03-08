@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-const Button = ({color, text, onClick}) => {
+const HideShowButton = ({color, text, onClick}) => {
  return <StyledButton onClick={onClick}
   style={{ backgroundColor: color, marginBottom: "20px"}}
   >
@@ -22,4 +22,4 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `
 
-export default Button;
+export default HideShowButton;
