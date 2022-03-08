@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
-import { links, social } from '../data';
+import { social } from '../data';
 import styled from 'styled-components'
 
 
@@ -23,23 +23,24 @@ const Navbar = () => {
   <nav>
    <div className='nav-center'>
     <div className='nav-header'>
-     <StyledLogo>Full-Stack App</StyledLogo>
+     <a href='/'><StyledLogo>Full-Stack App</StyledLogo></a>
      <button className='nav-toggle' onClick={toggleLinks}>
       <FaBars />
      </button>
     </div>
-    <div className='links-container' ref={linksContainerRef}>
-     <ul className='links' ref={linksRef}>
-      {links.map((link) => {
-       const { id, url, text } = link;
-       return (
-        <li key={id}>
-         <a href={url} target="_blank">{text}</a>
-        </li>
-       );
-      })}
-     </ul>  
-    </div>  
+       <div className='links-container' ref={linksContainerRef}>
+         <ul className='links' ref={linksRef}>
+           <li>
+             <a href={'/'}>Home</a>
+           </li>
+           <li>
+             <a href={'https://elisa-canyelles-portfolio.netlify.app/'} target="_blank">About Me</a>
+           </li>
+           <li>
+             <a href={'https://elisa-canyelles-portfolio.netlify.app/#work'} target="_blank">Other Projects</a>
+           </li>
+         </ul>
+       </div>  
   <ul className='social-icons'>
      {social.map((socialIcon) => {
       const { id, url, icon } = socialIcon;
