@@ -392,7 +392,8 @@ nav {
 /* Error page */
 
 .error_page {
-   min-height: calc(100vh - 10rem);
+  width: 100%;
+  min-height: calc(100vh - 10rem);
   padding: 5rem 0;
   background: var(--clr-primary-10);
   display: flex;
@@ -403,19 +404,28 @@ nav {
 }
 
 .error-btn {
-  text-transform: uppercase;
-  background: var(--clr-primary-5);
-  color: var(--clr-primary-10);
-  padding: 0.375rem 0.75rem;
+  text-transform: capitalize;
+  background: #FF4154;
+  color: var(--clr-white);
+  padding: 10px 20px;
   letter-spacing: var(--spacing);
   display: inline-block;
   font-weight: 400;
   transition: var(--transition);
-  font-size: 0.875rem;
+  font-size: 1.2em;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
   border-color: transparent;
+}
+
+.error-title{
+   font-size: 10rem;
+}
+
+.error-subtitle {
+  text-transform: none;
+    margin-bottom: 2rem;
 }
 .btn:hover {
   color: var(--clr-primary-1);
