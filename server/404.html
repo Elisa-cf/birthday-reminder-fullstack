@@ -4,55 +4,57 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Error page</title>
+
  <style>
-    .error_page {
-        min-height: calc(100vh - 10rem); 
-        padding: 5rem 0rem;
-        background: var(--clr-primary-10);
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        text-align: center; 
-    } 
+ 
+ body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: hsl(209, 61%, 16%);
+  line-height: 0.8;
+  background-color: #4ed4ac;
+}
+.error_page {
+ min-height: calc(100vh - 10rem);  
+ padding: 30px;
+ display: flex;
+ justify-content: center; 
+ flex-direction: column;  
+ align-items: center;   
+ text-align: center;  
+}  
+.error-btn {
+ text-transform: capitalize;
+ text-decoration: none;
+ background: #FF4154;
+ color: white;
+ padding: 12px 25px;
+ letter-spacing: 0.1rem;;
+ font-weight: 400;
+ font-size: 1.1rem;
+ cursor: pointer;
+ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+ border-radius: 0.25rem;
+ border-color: transparent;
+}
+.error-title{
+font-size: 5rem;
+margin-bottom: 2rem;
+}
+.error-subtitle {
+text-transform: none;
+margin-bottom: 3.2rem;
+font-size: 1.5rem;
+} 
 
-    .error-btn {
-        text-transform: capitalize;
-        background: #FF4154;
-        color: var(--clr-white);
-        padding: 10px 20px;
-        letter-spacing: var(--spacing);
-        display: inline-block;
-        font-weight: 400;
-        transition: var(--transition);
-        font-size: 1.2em;
-        cursor: pointer;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        border-radius: var(--radius);
-        border-color: transparent;
-    }
+</style>
 
-    .error-title{
-        font-size: 5rem;
-        margin-bottom: 2rem;
-    }
-
-    .error-subtitle {
-        text-transform: none;
-        margin-bottom: 3rem;
-        font-size: 1.5rem;
-    }
-    .btn:hover {
-        color: var(--clr-primary-1);
-        background: var(--clr-primary-7);
-    }
- </style>
 </head>
 <body>
  <section class="error_page">
   <h1 class="error-title">ERROR 404</h1>
-  <h3 class="error-subtitle">Sorry, the page you are trying to reach doesn't exist</h3>
-  <a href="/" class="error-btn">back home</a>
+  <p class="error-subtitle">Sorry, the page you are trying to reach doesn't exist</p>
+  <a href="/" class="error-btn">Go to home</a>
  <section>
 </body>
 </html>
